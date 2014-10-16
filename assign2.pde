@@ -102,12 +102,24 @@ void draw(){
          image(imgLeftCar1, leftCar1X, leftCar1Y);
   
          //car2 move
+         leftCar2X += speed*1.8;
+         if (leftCar2X > width){
+             leftCar2X = 0;
+         }
          image(imgLeftCar2, leftCar2X, leftCar2Y);
   
          //car3 move
+         rightCar1X -= speed*1.5;
+         if (rightCar1X < 0){
+             rightCar1X = 640;
+         }
          image(imgRightCar1, rightCar1X, rightCar1Y);
 
          //car4 move
+         rightCar2X -= speed*0.5;
+         if (rightCar2X < 0){
+             rightCar2X = 640;
+         }
          image(imgRightCar2, rightCar2X, rightCar2Y);
   
          float frogCX = frogX+frogW/2;
@@ -132,9 +144,37 @@ void draw(){
   }
 }
 void keyPressed() {
-    if (key == CODED /*still needs something*/) {
-
-    }
+    if (key == CODED) {
+      switch( keyCode )
+      {
+        case UP:
+        if(frogY>16){
+         frogY-=32;
+        }
+          break;
+        
+          
+          case DOWN:
+         if(frogY<448){ 
+         frogY+=32;
+         }
+          break;
+         
+          
+          case LEFT:
+          if(frogX>16){
+         frogX-=32;
+          }
+          break;
+          
+          
+          case RIGHT:
+          if(frogX<592){
+         frogX+=32;
+          }
+          break;
+      }
+  }
     if(key==ENTER /*still needs something*/){
       gameState = GAME_RUN;
       life=3;
