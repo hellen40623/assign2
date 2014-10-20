@@ -1,4 +1,5 @@
 // global variables
+int currentTime = 0;
 float frogX, frogY, frogW, frogH, frogInitX, frogInitY;
 float leftCar1X, leftCar1Y, leftCar1W, leftCar1H;//car1
 float leftCar2X, leftCar2Y, leftCar2W, leftCar2H;//car2
@@ -69,10 +70,11 @@ void draw(){
         text("Press Enter", width/3, height/2);    
         break;
     case FROG_DIE:
-        delay(1000);
-        frogX=frogInitX;
-        frogY=frogInitY;
-        gameState = GAME_RUN;
+ if(millis()-currentTime >= 1000){
+           frogX=frogInitX;
+           frogY=frogInitY;
+           gameState = GAME_RUN;
+}
         break;
     case GAME_RUN:
         background(10,110,16);
@@ -132,35 +134,39 @@ void draw(){
          if(frogCX<=leftCar1X+leftCar1W && frogCY<leftCar1Y+leftCar1H
          && frogCX > leftCar1X && frogCY > leftCar1Y){
          
-           image(imgDeadFrog, frogX, frogY);
-          life--;
-          gameState = FROG_DIE;
+           currentTime = millis();
+image(imgDeadFrog, frogX, frogY);
+life--;
+gameState = FROG_DIE;
          }
 
          // car2 hitTest
          if(frogCX<=leftCar2X+leftCar2W && frogCY<leftCar2Y+leftCar2H
          && frogCX > leftCar2X && frogCY > leftCar2Y){
          
-           image(imgDeadFrog, frogX, frogY);
-          life--;
-          gameState = FROG_DIE;
+          currentTime = millis();
+image(imgDeadFrog, frogX, frogY);
+life--;
+gameState = FROG_DIE;
          }
          // car3 hitTest
          if(frogCX<=rightCar1X+rightCar1W && frogCY<rightCar1Y+rightCar1H
          && frogCX > rightCar1X && frogCY > rightCar1Y){
          
-           image(imgDeadFrog, frogX, frogY);
-          life--;
-          gameState = FROG_DIE;
+           currentTime = millis();
+image(imgDeadFrog, frogX, frogY);
+life--;
+gameState = FROG_DIE;
          }
         
          // car4 hitTest
          if(frogCX<=rightCar2X+rightCar2W && frogCY<rightCar2Y+rightCar2H
          && frogCX > rightCar2X && frogCY > rightCar2Y){
          
-           image(imgDeadFrog, frogX, frogY);
-          life--;
-          gameState = FROG_DIE;
+           currentTime = millis();
+image(imgDeadFrog, frogX, frogY);
+life--;
+gameState = FROG_DIE;
          }
         break;
         
