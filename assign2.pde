@@ -217,7 +217,7 @@ gameState = FROG_DIE;
       }
   }
 
-    if(key==ENTER && gameState == GAME_START||gameState == GAME_LOSE || gameState == GAME_WIN){
+    if(key==ENTER && (gameState == GAME_START||gameState == GAME_LOSE || gameState == GAME_WIN)){
       
       gameState = GAME_RUN;
       life=3;
