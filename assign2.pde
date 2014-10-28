@@ -184,38 +184,31 @@ gameState = FROG_DIE;
         break;
   }
 }
-    void keyPressed() {
-  if (key == CODED && gameState ==GAME_RUN) {
-      switch( keyCode )
-      {
-        case UP:
-        if(frogY>16){
-         frogY-=32;
-        }
-          break;
-        
-          
-          case DOWN:
-         if(frogY<448){ 
-         frogY+=32;
-         }
-          break;
-         
-          
-          case LEFT:
-          if(frogX>16){
-         frogX-=32;
-          }
-          break;
-          
-          
-          case RIGHT:
-          if(frogX<592){
-         frogX+=32;
-          }
-          break;
+    
+       void keyPressed() {
+    if (key == CODED /*still needs something*/) {
+      if (keyCode == UP) {
+        frogY = frogY - 32;
+        if (frogY < 0){
+         frogY = 0;
       }
-  }
+    } else if (keyCode == DOWN) {
+        frogY = frogY + 32;
+        if (frogY > 448){
+         frogY = 448;
+      }
+    } else if (keyCode == LEFT) {
+        frogX = frogX - 32;
+        if (frogX < 0){
+         frogX = 0;
+      }
+    } else if (keyCode == RIGHT) {
+        frogX = frogX + 32;
+        if (frogX > 608){
+         frogX = 608;
+      }
+    }
+  }    
 
     if(key==ENTER && (gameState == GAME_START||gameState == GAME_LOSE || gameState == GAME_WIN)){
       
